@@ -126,3 +126,14 @@ const Game = (() => {
     resetGame,
   };
 })();
+
+// Export the Game module functions for testing purposes
+module.exports = {
+  Gameboard,
+  setupGame: Game.setupGame,
+  getCurrentPlayer: Game.getCurrentPlayer,
+  nextTurn: Game.nextTurn,
+  isGameOver: Game.isGameOver,
+  announceResult: Game.announceResult,
+  resetGame: Game.resetGame,
+};

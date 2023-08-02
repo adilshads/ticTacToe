@@ -71,3 +71,58 @@ console.log(player1.getMarker()); // It should output "X".
 
 console.log(player2.getName()); // It should output "Player 2".
 console.log(player2.getMarker()); // It should output "O".
+
+
+
+
+
+
+// Game module
+const Game = (() => {
+  let player1;
+  let player2;
+  let gameboard;
+  let currentPlayer;
+
+  // Public method to set up the game
+  const setupGame = (namePlayer1, namePlayer2) => {
+
+    player1 = createPlayer(namePlayer1, "X");
+    player2 = createPlayer(namePlayer2, "O");
+
+    gameboard = Gameboard;
+
+    currentPlayer = player1;
+  };
+
+  const getCurrentPlayer = () => currentPlayer;
+
+  const nextTurn = () => {
+    currentPlayer = currentPlayer === player1 ? player2 : player1;
+  };
+
+  // Public method to check if the game is over (win or tie)
+  const isGameOver = () => {
+    const board = gameboard.getBoard();
+    // Add game-over condition check logic here (Step 7).
+  };
+
+  const announceResult = () => {
+    // Display a message congratulating the winning player or announcing a tie (Step 8).
+  };
+
+  const resetGame = () => {
+    gameboard.resetBoard();
+    currentPlayer = player1;
+    // Additional reset logic if needed.
+  };
+
+  return {
+    setupGame,
+    getCurrentPlayer,
+    nextTurn,
+    isGameOver,
+    announceResult,
+    resetGame,
+  };
+})();

@@ -9,21 +9,37 @@
 </head>
 
 <body>
-    <div id="game-board"> <!-- Game board grid will be dynamically generated here --> </div>
 
+  <h1>Tic Tac Toe</h1>
 
-    <!-- Input fields for player names -->
-    <label for="player1-name">Player 1:</label>
-    <input type="text" id="player1-name" placeholder="Enter name">
-    <br>
-    <label for="player2-name">Player 2:</label>
-    <input type="text" id="player2-name" placeholder="Enter name">
+  <!-- Game -->
+  <div class="game">
+    <!-- Gameboard -->
+    <div class="board">
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+    </div>
+    <!-- Display result of game -->
+    <div class="result"></div>
+  </div>
 
-    <!-- Start Button -->
-    <button id="start-button">Start Game</button>
+  <!-- Game Setup -->
+  <div class="players">
+    <!-- Players -->
+    <input type="text" id="player1Name" placeholder="Player 1 Name">
+    <input type="text" id="player2Name" placeholder="Player 2 Name">
 
-    <!-- Display for game results / player turn -->
-    <p id="result-message"></p>
+    <!-- Start Game -->
+    <button id="startBtn">Start Game</button>
+  </div>
 
 </body>
+
 </html>

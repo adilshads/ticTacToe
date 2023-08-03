@@ -1,0 +1,56 @@
+/* styles.css */
+
+/* Add some basic styling to the game container */
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  /* Add styles for the Tic Tac Toe board */
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 0; /* Remove any gap between the cells */
+    background-color: black;
+    box-sizing: border-box;
+    padding: 2px;
+  }
+  
+  /* Style the cells */
+  .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #333;
+    font-size: 2em;
+    cursor: pointer;
+    background-color: white;
+  }
+  
+  /* Add bold borders to all sides of the cell */
+  .cell:nth-child(-n + 3) {
+    border-top: 4px solid #333; /* Increase the thickness of top border */
+  }
+  
+  .cell:nth-last-child(-n + 3) {
+    border-bottom: 4px solid #333; /* Increase the thickness of bottom border */
+  }
+  
+  .cell:nth-child(3n + 1) {
+    border-left: 4px solid #333; /* Increase the thickness of left border */
+  }
+  
+  .cell:nth-child(3n) {
+    border-right: 4px solid #333; /* Increase the thickness of right border */
+  }
+  
+  /* Optional: Add some hover effect to the cells */
+  .cell:hover {
+    background-color: #f2f2f2;
+  }
+  

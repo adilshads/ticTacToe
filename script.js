@@ -137,3 +137,36 @@ module.exports = {
   announceResult: Game.announceResult,
   resetGame: Game.resetGame,
 };
+
+
+
+// Render the Gameboard
+const updateBoardDisplay = () => {
+  const cells = document.querySelectorAll(".cell");
+  const board = Gameboard.getBoard();
+  cells.forEach((cell, index) => {
+    cell.textContent = board[index] || ""; // Show player's marker or empty string
+  });
+};
+
+// Render the result message
+const updateResultDisplay = (message) => {
+  const resultElement = document.querySelector(".result");
+  resultElement.textContent = message;
+};
+
+// Event listener for the "Start Game" button
+const startBtn = document.getElementById("startBtn");
+startBtn.addEventListener("click", () => {
+  const player1Name = document.getElementById("player1Name").value.trim();
+  const player2Name = document.getElementById("player2Name").value.trim();
+
+  if (player1Name !== "" && player2Name !== "") {
+    Game.setupGame(player1Name, player2Name);
+    Game.resetGame();
+    updateBoardDisplay(); // Add this line to update the board display
+    updateResultDisplay(""); // Add this line to update the result display
+  } else {
+    alert("Please enter names for both players.");
+  }
+});

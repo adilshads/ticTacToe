@@ -1,3 +1,8 @@
+console.log("Script loaded successfully.");
+
+
+
+
 const Gameboard = (() => {
     let boardArray = Array(9).fill(null);
   
@@ -127,6 +132,7 @@ const Game = (() => {
   };
 })();
 
+/*
 // Export the Game module functions for testing purposes
 module.exports = {
   Gameboard,
@@ -137,8 +143,7 @@ module.exports = {
   announceResult: Game.announceResult,
   resetGame: Game.resetGame,
 };
-
-
+*/
 
 // Render the Gameboard
 const updateBoardDisplay = () => {
@@ -149,6 +154,17 @@ const updateBoardDisplay = () => {
   });
 };
 
+const renderBoard = () => {
+  const cells = document.querySelectorAll('.cell');
+  const board = Gameboard.getBoard();
+
+  cells.forEach((cell, index) => {
+    cell.textContent = board[index] || ''; // Show player's marker or empty string
+  });
+};
+
+
+
 // Render the result message
 const updateResultDisplay = (message) => {
   const resultElement = document.querySelector(".result");
@@ -157,16 +173,63 @@ const updateResultDisplay = (message) => {
 
 // Event listener for the "Start Game" button
 const startBtn = document.getElementById("startBtn");
+
 startBtn.addEventListener("click", () => {
+  console.log("Start Game button clicked!");
+
   const player1Name = document.getElementById("player1Name").value.trim();
   const player2Name = document.getElementById("player2Name").value.trim();
 
   if (player1Name !== "" && player2Name !== "") {
     Game.setupGame(player1Name, player2Name);
     Game.resetGame();
-    updateBoardDisplay(); // Add this line to update the board display
-    updateResultDisplay(""); // Add this line to update the result display
+    updateBoardDisplay();
+    updateResultDisplay("");
+    renderBoard(); // Add this line to update the board display
   } else {
     alert("Please enter names for both players.");
   }
 });
+
+
+// Render the initial game board display
+renderBoard();
+
+// Allow players to add marks
+
+// Event listener for cell clicks
+const cells = document.querySelectorAll(".cell");
+cells.forEach((cell, index) => {
+  cell.addEventListener("click", () => {
+    console.log("Cell clicked:", index);
+    handleCellClick(index);
+  });
+});
+
+
+// Function to handle cell clicks
+const handleCellClick = (cellIndex) => {
+  console.log("Cell clicked:", cellIndex);
+
+  if (Gameboard.isCellEmpty(Math.floor(cellIndex / 3), cellIndex % 3)) {
+    const currentPlayer = Game.getCurrentPlayer();
+    const marker = currentPlayer.getMarker();
+
+    // Place the marker on the board
+    Gameboard.placeMarker(Math.floor(cellIndex / 3), cellIndex % 3, marker);
+
+    // Update the board display
+    updateBoardDisplay();
+
+    // Check if the game is over
+    if (Game.isGameOver()) {
+      // Display the result
+      announceResult();
+    } else {
+      // Switch to the next player's turn
+      Game.nextTurn();
+    }
+  } else {
+    console.log("Cell already occupied!");
+  }
+};

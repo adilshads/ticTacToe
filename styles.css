@@ -17,7 +17,8 @@
     padding: 2px;
 }
 
-  /* Style the cells */
+
+/* Style the cells */
 .cell {
     display: flex;
     justify-content: center;
@@ -30,6 +31,7 @@
     background-color: white;
 }
   
+
   /* Add bold borders to all sides of the cell */
 .cell:nth-child(-n + 3) {
     border-top: 4px solid #333; /* Increase the thickness of top border */
@@ -51,3 +53,5 @@
     background-color: #f2f2f2;
 }
   
+
+

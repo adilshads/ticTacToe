@@ -171,12 +171,10 @@ const updateResultDisplay = (message) => {
   resultElement.textContent = message;
 };
 
+
 // Event listener for the "Start Game" button
 const startBtn = document.getElementById("startBtn");
-
 startBtn.addEventListener("click", () => {
-  console.log("Start Game button clicked!");
-
   const player1Name = document.getElementById("player1Name").value.trim();
   const player2Name = document.getElementById("player2Name").value.trim();
 
@@ -185,7 +183,8 @@ startBtn.addEventListener("click", () => {
     Game.resetGame();
     updateBoardDisplay();
     updateResultDisplay("");
-    renderBoard(); // Add this line to update the board display
+    renderBoard();
+    displayPlayerNames(player1Name, player2Name); // Call the function to display player names
   } else {
     alert("Please enter names for both players.");
   }
@@ -232,4 +231,19 @@ const handleCellClick = (cellIndex) => {
   } else {
     console.log("Cell already occupied!");
   }
+};
+
+
+// Function to display player names
+const displayPlayerNames = (player1Name, player2Name) => {
+  const playerSetup = document.getElementById("playerSetup");
+  const playerDisplay = document.getElementById("playerDisplay");
+
+  // Hide the player setup and show the player names
+  playerSetup.style.display = "none";
+  playerDisplay.innerHTML = `
+    <p>${player1Name} (X)</p>
+    <p>${player2Name} (O)</p>
+  `;
+  playerDisplay.style.display = "block";
 };

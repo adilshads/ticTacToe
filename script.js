@@ -1,5 +1,12 @@
 console.log("Script loaded successfully.");
 
+window.addEventListener("DOMContentLoaded", () => {
+  // Display input fields and button
+  document.getElementById("player1Name").classList.remove("hidden");
+  document.getElementById("player2Name").classList.remove("hidden");
+  document.getElementById("startBtn").classList.remove("hidden");
+  
+});
 
 
 
@@ -190,6 +197,11 @@ startBtn.addEventListener("click", () => {
     document.getElementById("player1MarkerDisplay").textContent = `${player1Name} chooses X`;
     document.getElementById("player2MarkerDisplay").textContent = `${player2Name} chooses O`;
 
+    // Hide input fields
+    document.getElementById("player1Name").classList.add("hidden");
+    document.getElementById("player2Name").classList.add("hidden");
+    startBtn.classList.add("hidden");
+    
     Game.setupGame(player1Name, player2Name);
     Game.resetGame();
     updateBoardDisplay();

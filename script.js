@@ -186,6 +186,8 @@ startBtn.addEventListener("click", () => {
 
   const player1Name = document.getElementById("player1Name").value.trim();
   const player2Name = document.getElementById("player2Name").value.trim();
+  const errorMessage = document.getElementById("errorMessage");
+
 
   if (player1Name !== "" && player2Name !== "") {
 
@@ -201,6 +203,9 @@ startBtn.addEventListener("click", () => {
     document.getElementById("player1Name").classList.add("hidden");
     document.getElementById("player2Name").classList.add("hidden");
     startBtn.classList.add("hidden");
+
+    // Hide the error message if it was previously displayed
+    errorMessage.classList.add("hidden");
     
     Game.setupGame(player1Name, player2Name);
     Game.resetGame();
@@ -208,7 +213,7 @@ startBtn.addEventListener("click", () => {
     updateResultDisplay("");
     renderBoard(); // Add this line to update the board display
   } else {
-    alert("Please enter names for both players.");
+    errorMessage.classList.remove("hidden");
   }
 });
 

@@ -1,5 +1,3 @@
-// Inside game.test.js
-
 const { setupGame, getCurrentPlayer, nextTurn, isGameOver, announceResult, resetGame } = require('./script');
 const Gameboard = require('./script').Gameboard;
 

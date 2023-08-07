@@ -37,7 +37,6 @@ const Gameboard = (() => {
     };
   })();
 
-
 // Outside the Gameboard object (test code)
 
 // Test the getBoard method
@@ -115,12 +114,7 @@ const Game = (() => {
 
   // Public method to check if the game is over (win or tie)
   const isGameOver = () => {
-    const board = gameboard.getBoard();
-    // Add game-over condition check logic here (Step 7).
-  };
-
-  const announceResult = () => {
-    // Display a message congratulating the winning player or announcing a tie (Step 8).
+    return checkWin() || checkTie();
   };
 
   const resetGame = () => {
@@ -129,28 +123,57 @@ const Game = (() => {
     // Additional reset logic if needed.
   };
 
+  const checkWin = () => {
+    const board = gameboard.getBoard();
+    
+    // Define all possible winning combinations
+    const winCombinations = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+      [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+      [0, 4, 8], [2, 4, 6] // Diagonals
+    ];
+  
+    for (const combination of winCombinations) {
+      const [a, b, c] = combination;
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        return true; // We have a winner!
+      }
+    }
+  
+    return false; // No winner yet
+  };
+  
+  
+  const checkTie = () => {
+    const board = gameboard.getBoard();
+    return board.every(cell => cell !== null);
+  };
+
+  // Function to display the result on the webpage
+  const displayResult = (result) => {
+    const resultElement = document.querySelector(".result");
+    resultElement.textContent = result;
+  };
+
+  const announceResult = () => {
+    if (checkWin()) {
+      const winner = getCurrentPlayer().getName();
+      displayResult(`Congratulations! ${winner} wins!`);
+    } else if (checkTie()) {
+      displayResult("It's a tie!");
+    }
+  };
+
   return {
     setupGame,
     getCurrentPlayer,
     nextTurn,
     isGameOver,
-    announceResult,
+    announceResult, // Include the function in the return object
     resetGame,
   };
 })();
 
-/*
-// Export the Game module functions for testing purposes
-module.exports = {
-  Gameboard,
-  setupGame: Game.setupGame,
-  getCurrentPlayer: Game.getCurrentPlayer,
-  nextTurn: Game.nextTurn,
-  isGameOver: Game.isGameOver,
-  announceResult: Game.announceResult,
-  resetGame: Game.resetGame,
-};
-*/
 
 // Render the Gameboard
 const updateBoardDisplay = () => {
@@ -250,7 +273,7 @@ const handleCellClick = (cellIndex) => {
     // Check if the game is over
     if (Game.isGameOver()) {
       // Display the result
-      announceResult();
+      Game.announceResult(); // Correct function call
     } else {
       // Switch to the next player's turn
       Game.nextTurn();
@@ -259,3 +282,16 @@ const handleCellClick = (cellIndex) => {
     console.log("Cell already occupied!");
   }
 };
+
+/*
+module.exports = {
+  Gameboard,
+  setupGame,
+  getCurrentPlayer,
+  placeMarker,
+  isGameOver,
+  announceResult,
+  resetGame,
+};
+
+*/

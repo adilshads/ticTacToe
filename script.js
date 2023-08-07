@@ -257,11 +257,16 @@ const resetBtn = document.getElementById("resetBtn");
 
 resetBtn.addEventListener("click", () => {
   // Reset the game logic and update the display
+  document.getElementById("player1Name").classList.remove("hidden");
+  document.getElementById("player2Name").classList.remove("hidden");
+  document.getElementById("startBtn").classList.remove("hidden");
+
   Game.resetGame();
   updateBoardDisplay();
   updateResultDisplay("");
   renderBoard();
 });
+
 
 // Render the initial game board display
 renderBoard();

@@ -5,8 +5,9 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("player1Name").classList.remove("hidden");
   document.getElementById("player2Name").classList.remove("hidden");
   document.getElementById("startBtn").classList.remove("hidden");
-  
+  document.getElementById("resetBtn").classList.remove("hidden"); // Add this line
 });
+
 
 
 
@@ -36,6 +37,15 @@ const Gameboard = (() => {
       resetBoard,
     };
   })();
+
+const updatePlayerNames = (player1Name, player2Name) => {
+  const player1NameDisplay = document.getElementById("player1NameDisplay");
+  const player2NameDisplay = document.getElementById("player2NameDisplay");
+
+  player1NameDisplay.textContent = `Player 1: ${player1Name}`;
+  player2NameDisplay.textContent = `Player 2: ${player2Name}`;
+};
+
 
 // Outside the Gameboard object (test code)
 
@@ -231,6 +241,7 @@ startBtn.addEventListener("click", () => {
     errorMessage.classList.add("hidden");
     
     Game.setupGame(player1Name, player2Name);
+    updatePlayerNames(player1Name, player2Name);
     Game.resetGame();
     updateBoardDisplay();
     updateResultDisplay("");
@@ -240,6 +251,17 @@ startBtn.addEventListener("click", () => {
   }
 });
 
+// Reset Button 
+
+const resetBtn = document.getElementById("resetBtn");
+
+resetBtn.addEventListener("click", () => {
+  // Reset the game logic and update the display
+  Game.resetGame();
+  updateBoardDisplay();
+  updateResultDisplay("");
+  renderBoard();
+});
 
 // Render the initial game board display
 renderBoard();

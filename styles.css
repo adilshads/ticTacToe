@@ -1,67 +1,136 @@
-/* Add some basic styling to the game container */
+/* Body styles */
+body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+    background-color: #ffeb3b; /* Bright yellow background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    color: #e91e63; /* Pink heading */
+    font-family: 'Bangers', 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+    font-size: 3em; /* Larger font size */
+}
+
+
+/* Game container styles */
 .game {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
-  }
-  
-  /* Add styles for the Tic Tac Toe board */
+}
+
+/* Board styles */
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
     gap: 0; /* Remove any gap between the cells */
-    background-color: black;
+    background-color: #ff5722; /* Deep orange background */
     box-sizing: border-box;
     padding: 2px;
+    border-radius: 8px; /* Add a subtle border-radius for a rounded appearance */
 }
 
-
-/* Style the cells */
+/* Cell styles */
 .cell {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100px;
     height: 100px;
-    border: 2px solid #333;
+    border: 2px solid #e91e63; /* Pink border */
     font-size: 2em;
     cursor: pointer;
-    background-color: white;
+    background-color: #ffccbc; /* Light orange background */
 }
-  
 
-  /* Add bold borders to all sides of the cell */
-.cell:nth-child(-n + 3) {
-    border-top: 4px solid #333; /* Increase the thickness of top border */
+.cell:nth-child(-n + 3),
+.cell:nth-last-child(-n + 3),
+.cell:nth-child(3n + 1),
+.cell:nth-child(3n),
+.cell:nth-child(2),
+.cell:nth-child(5),
+.cell:nth-child(8) {
+    border-width: 4px;
 }
-  
-.cell:nth-last-child(-n + 3) {
-    border-bottom: 4px solid #333; /* Increase the thickness of bottom border */
-}
-  
-.cell:nth-child(3n + 1) {
-    border-left: 4px solid #333; /* Increase the thickness of left border */
-}
-  
-.cell:nth-child(3n) {
-    border-right: 4px solid #333; /* Increase the thickness of right border */
-}
-  
+
 .cell:hover {
-    background-color: #f2f2f2;
+    background-color: #ffd54f; /* Amber on hover */
 }
-  
 
+/* Result styles */
+.result {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 15px;
+    color: #4caf50; /* Green result text */
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+}
 
-.hidden {
-    display: none;
-  }
+/* Players container styles */
+.players {
+    text-align: center;
+    margin-top: 20px;
+}
 
-  
+/* Input styles */
+input {
+    padding: 8px;
+    margin: 5px;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+}
+
+/* Button styles */
+button {
+    padding: 10px;
+    margin: 10px;
+    background-color: #2196f3; /* Bright blue button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Bangers', 'Arial', sans-serif;
+}
+
+button:hover {
+    background-color: #1565c0; /* Darker blue on hover */
+}
+
+/* Error message styles */
 .error-message {
-    color: red;
+    color: #e91e63; /* Pink error message text */
     font-size: 16px;
     margin-top: 10px;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+    .board {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+        gap: 0;
+        padding: 2px;
+    }
+}
+
+
+/* Player names display styles */
+#player1NameDisplay,
+#player2NameDisplay {
+    color: #e91e63; /* Pink player names */
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+/* Player marker display styles */
+#player1MarkerDisplay,
+#player2MarkerDisplay {
+    color: #2196f3; /* Bright blue player markers */
+    font-size: 1.2em;
+    margin: 5px 0;
 }

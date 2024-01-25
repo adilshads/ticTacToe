@@ -7,6 +7,13 @@ Tic Tac Toe game you can play in your browser!
 2. Open index.html file in web browser.
 3. Or click following link: https://adilshads.github.io/ticTacToe/
 
+## Instructions
+
+1. Fill out names of Player 1 and 2. 
+2. Click "Start Game". 
+3. 3 in a Row Wins
+4. Click "Reset Game" to play again. 
+
 ## Usage
 
 1. Gameboard Module
@@ -93,48 +100,32 @@ Explanation:
 These code snippets handle the interaction when a player clicks on a cell in the game board. The `handleCellClick` function checks if the cell is empty, places the current player's marker, updates the display, checks for a game-over condition, and switches to the next player's turn.
 
 
-## Configuration
-
-Explain any configuration options and how to set them. Mention environment variables or configuration files.
-
-## Contributing
-
-We welcome contributions! Please follow the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md) to contribute to the project.
-
 ## License
 
-This project is licensed under the [Your License Name] - see the [LICENSE.md](LICENSE.md) file for details.
+MIT License
 
-## Credits
+Copyright (c) [2024] [Adil Shad]
 
-- List contributors or libraries your project depends on.
-- Mention any external resources or references.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## Documentation
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-For more detailed information, refer to the [documentation](docs/).
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-## Testing
+## Screenshots
 
-Describe how to run tests for your project and include any relevant information about testing frameworks used.
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for details on the version history and changes made in each version.
-
-## Contact Information
-
-- Your Name
-- Email: your.email@example.com
-- Twitter: [@your_twitter_handle](https://twitter.com/your_twitter_handle)
-
-## Badges
-
-Add relevant badges for build status, code coverage, or other metrics.
-
-[![Build Status](...)](...)
-[![Code Coverage](...)](...)
-
-```
-
-Feel free to adapt and customize this template based on the specific needs and conventions of your project.
+[Clear Board](img/ticTacToeClear.png)
+[Win Board](img/ticTacToeWin.png)
+[Tie Board](img/ticTacToeTie.png)
